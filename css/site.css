@@ -64,6 +64,21 @@ main>.container {
     background-color: var(--ns-secondary-color);
 }
 
+.fizz {
+    color: #1a1aa0;
+    font-weight: bold;
+}
+
+.buzz{
+    color: #8f1313;
+    font-weight: bold;
+}
+
+.fizzbuzz{
+    color: #881888;
+    font-weight: bold;
+}
+
 /*Footer Styles*/
 .footer{
     color: var(--ns-light-color);

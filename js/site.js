@@ -45,10 +45,18 @@ function generateData(fizzValue, buzzValue){
 //Return: none
 //Displays fizzbuzz
 function displayFizzBuzz(dataArr){
-    let templateRows = "";
+    let contentDiv = document.getElementById("results");
+    let content="";
 
-    for (let i = 0; i < dataArr.length; i++) {
-        templateRows += `<tr><td>${dataArr[i]}</td></tr>`;
+    //clear data
+    contentDiv.innerHTML = "";
+
+    for (let i = 0; i < dataArr.length; i++){
+        let dataValue = dataArr[i];
+        let dataElement = `<div class="${dataValue} col">${dataValue}</div>`;
+        content += dataElement;
     }
-    document.getElementById("results").innerHTML = templateRows;
+
+    //write to page
+    contentDiv.innerHTML = content;
 }
