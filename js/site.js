@@ -1,4 +1,4 @@
-//Display message to the user
+//Get user input
 function getValues(){
     let fizzValue = document.getElementById("fizzValue").value;
     let buzzValue = document.getElementById("buzzValue").value;
@@ -9,7 +9,9 @@ function getValues(){
     
     //Validate Input
     if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
-        displayFizzBuzz(fizzValue, buzzValue);
+
+        let dataArr = generateData(fizzValue, buzzValue);
+        displayFizzBuzz(dataArr);
     }
     else {
         Swal.fire({
@@ -21,28 +23,32 @@ function getValues(){
 }
 
 //Input: Integer, Integer
+//Return: Array of Integers
+//Populates and returns an array of fizzbuzz values
+function generateData(fizzValue, buzzValue){
+    dataArr = [];
+    for (let i = 1; i <= 100; i++) {
+        if (i % fizzValue == 0 && i % buzzValue == 0) {
+            dataArr.push("fizzbuzz");
+        } else if (i % fizzValue == 0) {
+            dataArr.push("fizz");
+        } else if (i % buzzValue == 0) {
+            dataArr.push("buzz");
+        } else {
+            dataArr.push(i);
+        }
+    }
+    return dataArr;
+}
+
+//Input: Array of Integers
 //Return: none
 //Displays fizzbuzz
-function displayFizzBuzz(fizzValue, buzzValue){
+function displayFizzBuzz(dataArr){
     let templateRows = "";
-    let value = "";
 
-    for (let i = 1; i <= 100; i++){
-        if (i % fizzValue == 0 && i % buzzValue == 0){
-            value = "fizzbuzz";
-        }
-        else if (i % fizzValue == 0){
-            value = "fizz";
-        }
-        else if (i % buzzValue == 0){
-            value = "buzz";
-        }
-        else{
-            value = i;
-        }
-
-        let row = `<tr><td>${value}</td></tr>`;
-        templateRows += row;
+    for (let i = 0; i < dataArr.length; i++) {
+        templateRows += `<tr><td>${dataArr[i]}</td></tr>`;
     }
     document.getElementById("results").innerHTML = templateRows;
 }
