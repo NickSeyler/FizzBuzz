@@ -9,4 +9,4 @@ If a number is divisible by both 3 and 5, say fizzbuzz instead.
 You can change the values of fizz and buzz.
 
 ## Demo The Project
-[nickseyler-fizzbuzz.netlify.app](nickseyler-fizzbuzz.netlify.app)
+[https://nickseyler-fizzbuzz.netlify.app](https://nickseyler-fizzbuzz.netlify.app)
