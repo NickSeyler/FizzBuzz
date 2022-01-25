@@ -65,27 +65,96 @@
         <div class="container mt-5 px-5">
             <h2 class="border-1 border-bottom border-dark">The Code</h2>
             <div class="row">
+
                 <div class="col-12 col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-js">
-                            //Display message to the user
-                            function getMessage(){
-                                let userMessage = document.getElementById("message").value;
-                                Swal.fire(
-                                    'The App Title',
-                                    userMessage,
-                                    'success'
-                                );
-                            }                       
+                            //Get user input
+                            function getValues(){
+                                let fizzValue = document.getElementById("fizzValue").value;
+                                let buzzValue = document.getElementById("buzzValue").value;
+
+                                fizzValue = parseInt(fizzValue);
+                                buzzValue = parseInt(buzzValue);
+
+                                
+                                //Validate Input
+                                if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
+
+                                    let dataArr = generateData(fizzValue, buzzValue);
+                                    displayFizzBuzz(dataArr);
+                                }
+                                else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Only integers are allowed'
+                                    });
+                                }
+                            }
                         </code>
                     </pre>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <p>The code is structured in one function.
-                        It accesses the user's input then displays a Sweetalert alert window.</p>
-                    <h5>getMessage</h5>
-                    <p>Prints the user's inputted message.</p>
+                    <h5>getValues</h5>
+                    <p>Get the inputs from the webpage and validate them.</p>
                 </div>
+
+                <div class="col-12 col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-js">
+                        //Populates and returns an array of fizzbuzz values
+                        function generateData(fizzValue, buzzValue){
+                            dataArr = [];
+                            for (let i = 1; i &lt= 100; i++) {
+                                if (i % fizzValue == 0 && i % buzzValue == 0) {
+                                    dataArr.push("fizzbuzz");
+                                } else if (i % fizzValue == 0) {
+                                    dataArr.push("fizz");
+                                } else if (i % buzzValue == 0) {
+                                    dataArr.push("buzz");
+                                } else {
+                                    dataArr.push(i);
+                                }
+                            }
+                            return dataArr;
+                        }
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h5>generateData</h5>
+                    <p>Generate and place the data into an array.</p>
+                </div>
+
+                <div class="col-12 col-lg-8">
+                    <pre class="line-numbers">
+                        <code class="language-js">
+                        //Displays fizzbuzz
+                        function displayFizzBuzz(dataArr){
+                            let contentDiv = document.getElementById("results");
+                            let content="";
+
+                            //clear data
+                            contentDiv.innerHTML = "";
+
+                            for (let i = 0; i &lt dataArr.length; i++){
+                                let dataValue = dataArr[i];
+                                let dataElement = `&ltdiv class="${dataValue} col"&gt${dataValue}&lt/div&gt`;
+                                content += dataElement;
+                            }
+
+                            //write to page
+                            contentDiv.innerHTML = content;
+                        }
+                        </code>
+                    </pre>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <h5>displayFizzBuzz</h5>
+                    <p>Display Fizzbuzz to the webpage</p>
+                </div>
+
             </div>
         </div>
     </main>

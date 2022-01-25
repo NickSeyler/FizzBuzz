@@ -17,7 +17,7 @@ function getValues(){
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Only integers are allowed for FizzBuzz'
+            text: 'Only integers are allowed'
         });
     }
 }
